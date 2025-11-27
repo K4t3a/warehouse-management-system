@@ -170,7 +170,7 @@
     INSERT INTO users (email, password_hash, name, role_id)
     VALUES ('admin@warehouse.com', 'HASHED_PASSWORD', 'Администратор', 1);
 
-В ходе разработки использовалась тестовая пара: `admin@warehouse.com / admin123`.
+В ходе разработки использовалась тестовые данные: `admin@warehouse.com / admin123`.
 
 ---
 
