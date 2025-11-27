@@ -107,6 +107,8 @@
 ---
 
 ## 5. Установка и запуск
+    git clone https://github.com/K4t3a/warehouse-management-system
+    
 
 ### 5.1. Backend
 
