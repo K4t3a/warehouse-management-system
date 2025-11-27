@@ -3,6 +3,8 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const { sequelize } = require('./src/config/database');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./src/config/swagger');
 const initRoles = require('./src/scripts/initRoles');
 
 // важно: инициализация моделей и ассоциаций
@@ -16,11 +18,23 @@ const warehouseCrudRoutes = require('./src/routes/warehouseCrudRoutes');
 const supplierRoutes = require('./src/routes/supplierRoutes');
 const orderRoutes = require('./src/routes/orderRoutes');
 
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
+
+/**
+ * @swagger
+ * /health:
+ *   get:
+ *     summary: Проверка доступности сервера
+ *     tags: [System]
+ *     responses:
+ *       200:
+ *         description: Сервер работает
+ */
 
 // health-check
 app.get('/health', (req, res) => {
@@ -38,6 +52,7 @@ app.use('/api/products', productRoutes);
 app.use('/api/warehouses', warehouseCrudRoutes);   // справочник складов (CRUD)
 app.use('/api/suppliers', supplierRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // обработка 404
 app.use((req, res) => {

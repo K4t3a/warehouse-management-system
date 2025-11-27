@@ -1,3 +1,78 @@
+/**
+ * @swagger
+ * tags:
+ *   name: Auth
+ *   description: Аутентификация и авторизация
+ */
+
+/**
+ * @swagger
+ * /api/auth/register:
+ *   post:
+ *     summary: Регистрация пользователя (только для администратора или для первоначальной инициализации)
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - email
+ *               - password
+ *               - role
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 format: email
+ *                 example: manager@warehouse.com
+ *               password:
+ *                 type: string
+ *                 example: manager123
+ *               name:
+ *                 type: string
+ *                 example: "Менеджер Иванов"
+ *               role:
+ *                 type: string
+ *                 description: Роль пользователя (admin/manager/storekeeper)
+ *                 example: "manager"
+ *     responses:
+ *       201:
+ *         description: Пользователь успешно создан
+ */
+
+/**
+ * @swagger
+ * /api/auth/login:
+ *   post:
+ *     summary: Вход пользователя
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - email
+ *               - password
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 format: email
+ *                 example: admin@warehouse.com
+ *               password:
+ *                 type: string
+ *                 example: admin123
+ *     responses:
+ *       200:
+ *         description: Успешный вход
+ *       401:
+ *         description: Неверный email или пароль
+ */
+
+
+
 
 const { Router } = require('express');
 const authController = require('../controllers/authController');
