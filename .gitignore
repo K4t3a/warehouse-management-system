@@ -1,0 +1,44 @@
+# Общие
+.DS_Store
+Thumbs.db
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Среда разработки
+.vscode/
+.idea/
+*.iml
+
+# Node / NPM
+node_modules/
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+
+# Сборка фронта/бэка
+dist/
+build/
+coverage/
+
+# Env-файлы (важно!)
+.env
+.env.local
+.env.development
+.env.production
+backend/.env
+backend/.env.*
+frontend/.env
+frontend/.env.*
+
+# Бэкенд артефакты
+backend/logs/
+backend/coverage/
+backend/.nyc_output/
+
+# Фронтенд артефакты (Vite/React)
+frontend/dist/
+frontend/build/
+frontend/.vite/
